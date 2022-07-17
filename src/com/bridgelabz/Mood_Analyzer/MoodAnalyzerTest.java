@@ -7,7 +7,7 @@ class ModeAnalyzerTest
     @Test
     public void analysemood()
     {
-        MoodAnalyzerMain moodanalyzer = new MoodAnalyzerMain("I am in any mood");
+        MoodAnalyzerMain moodanalyzer = new MoodAnalyzerMain();
         assertEquals("Happy",moodanalyzer.returnEmotion());
     }
 

@@ -1,26 +1,38 @@
 package com.bridgelabz.Mood_Analyzer;
 
-public class MoodAnalyzerMain {
+public class MoodAnalyzerMain
+{
 
     private String message;
+
+    public MoodAnalyzerMain()
+    {
+
+    }
 
     public MoodAnalyzerMain(String message)
     {
         this.message = message;
     }
+
     public String returnEmotion()
     {
-        if(message == "I am in sad mood")
+        try {
+            if(message.equals( "I am in sad mood"))
+            {
+                return "sad";
+            }
+            else if(message.equals("I am in any mood"))
+            {
+                return "Happy";
+            }
+
+        } catch (NullPointerException e)
         {
-            System.out.println("Sad");
-            return "sad";
-        }
-        else if(message == "I am in any mood")
-        {
-            System.out.println("Happy");
+            System.out.println(e.getMessage());
             return "Happy";
         }
-        System.out.println("Happy");
-        return "Happy";
+        return message;
     }
+
 }
