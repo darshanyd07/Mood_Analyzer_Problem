@@ -1,9 +1,23 @@
 package com.bridgelabz.Mood_Analyzer;
 
+class MoodAnalysisException extends NullPointerException
+{
+
+    public MoodAnalysisException()
+    {
+        super();
+
+    }
+    public MoodAnalysisException(String s)
+    {
+        super(s);
+
+    }
+}
 public class MoodAnalyzerMain
 {
 
-    private String message;
+    private String message = "Null";
 
     public MoodAnalyzerMain()
     {
@@ -15,22 +29,36 @@ public class MoodAnalyzerMain
         this.message = message;
     }
 
-    public String returnEmotion()
+    public String returnEmotion() throws MoodAnalysisException
     {
-        try {
-            if(message.equals( "I am in sad mood"))
+        try
+        {
+            if(message.contains( "sad"))
             {
                 return "sad";
             }
-            else if(message.equals("I am in any mood"))
+
+            else if(message.contains("any") || message.contains("happy"))
             {
                 return "Happy";
             }
 
-        } catch (NullPointerException e)
+            else if(message.equals("Null"))
+            {
+                throw new MoodAnalysisException();
+            }
+
+            else if (message != null)
+            {
+                return "Happy";
+            }
+
+        }
+        catch (MoodAnalysisException e)
         {
-            System.out.println(e.getMessage());
+            System.out.println(e.getMessage()+"Exception is handled");
             return "Happy";
+
         }
         return message;
     }
